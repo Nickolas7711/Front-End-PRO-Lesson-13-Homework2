@@ -17,25 +17,19 @@ class Student {
             return 0;
         }
 
-        let sum = this.grades.reduce(function(total, grade) {
-            return total + grade;
-        });
+        let sum = this.grades.reduce((total, grade) => total + grade);
         return sum / this.grades.length;
     }
 
     present() {
-        let index = this.attendance.findIndex(function(item) {
-            return item === null;
-        });
+        let index = this.attendance.findIndex((item) => item === null);
         if (index !== -1) {
             this.attendance[index] = true;
         }
     };
 
     absent() {
-        let index = this.attendance.findIndex(function(item) {
-            return item === null;
-        });
+        let index = this.attendance.findIndex((item) => item === null);
         if (index !== -1) {
             this.attendance[index] = false;
         }
