@@ -1,16 +1,18 @@
-function Student(lastName, firstName, yearBirth) {
+class Student {
+    constructor(lastName, firstName, yearBirth) {
     this.lastName = lastName;
     this.firstName = firstName;
     this.yearBirth = yearBirth;
     this.grades = [];
     this.attendance = new Array(25).fill(null);
+    }
 
-    this.getAgeStudent = function() {
+    getAgeStudent() {
         let curentYers = new Date().getFullYear();
         return curentYers - this.yearBirth;
-    };
+    }
 
-    this.getAverageGrade = function() {
+    getAverageGrade() {
         if (this.grades.length === 0) {
             return 0;
         }
@@ -19,9 +21,9 @@ function Student(lastName, firstName, yearBirth) {
             return total + grade;
         });
         return sum / this.grades.length;
-    };
+    }
 
-    this.present = function() {
+    present() {
         let index = this.attendance.findIndex(function(item) {
             return item === null;
         });
@@ -30,7 +32,7 @@ function Student(lastName, firstName, yearBirth) {
         }
     };
 
-    this.absent = function() {
+    absent() {
         let index = this.attendance.findIndex(function(item) {
             return item === null;
         });
@@ -39,7 +41,7 @@ function Student(lastName, firstName, yearBirth) {
         }
     };
 
-    this.summary = function() {
+    summary() {
         let averageGrade = this.getAverageGrade();
         let attendanceRatio = this.getAttendanceRatio();
     
@@ -50,13 +52,11 @@ function Student(lastName, firstName, yearBirth) {
         } else {
             return "Редиска!";
         }
-    };
+    }
 
-    this.getAttendanceRatio = function() {
+    getAttendanceRatio() {
         let total = this.attendance.length;
-        let presentCount = this.attendance.filter(function(item) {
-            return item === true;
-        }).length;
+        let presentCount = this.attendance.filter((item) => item === true).length;
         return presentCount / total;
     };
 }
